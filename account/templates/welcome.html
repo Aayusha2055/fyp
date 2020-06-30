@@ -1,11 +1,42 @@
 <html>
-  <head> </head>
-  <body>
-    {% if user.is_authenticated %}
-    <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p>
-    {% else %}
-    <p>Welcome, new user. Please log in.</p>
+<head></head>
+<body>
+{% if user.is_authenticated %}
+    {% if msg == 'crawled' %}
+        <script>
+            alert("Data crawled successfully")
+        </script>
     {% endif %}
-    <a href="/logout/">Logout</a>
-  </body>
+    <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p>
+    <a href=" {% url 'crawl' %}">Get rainfall data</a><br><br>
+
+    <table border="1">
+        <tr>
+            <th>Station</th>
+            <th>Maximum Temp.
+                (°C)
+            </th>
+            <th>Minimum Temp.
+                (°C)
+            </th>
+            <th>24 hrs Rainfall
+                (mm)
+            </th>
+        </tr>
+
+    {% for observation in observation_all %}
+    <tr>
+        <td>{{ observation.station }}</td>
+        <td>{{ observation.max_temp }}</td>
+        <td>{{ observation.mini_temp }}</td>
+        <td>{{ observation.rainfall_mm }}</td>
+    </tr>
+    {% endfor %}
+    </table>
+
+{% else %}
+    <p>Welcome, new user. Please log in.</p>
+{% endif %}
+<a href="/logout/">Logout</a>
+</body>
 </html>

@@ -21,4 +21,10 @@ class products(models.Model):
 # class Profile(models.Model):
 #     user = models.OneToOneField(settings.AUTH_USER_MODEL)
 #     dob = models.DateField(blank=True, null=True)
-    
+
+
+class Observation(models.Model):
+    station = models.CharField(max_length=255,  null=True)
+    max_temp = models.CharField(max_length=255, null=True)
+    mini_temp = models.CharField(max_length=255, null=True)
+    rainfall_mm = models.CharField(max_length=255, null=True)
