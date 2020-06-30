@@ -1,0 +1,214 @@
+<html>
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Playfair+Display|Raleway|Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" />
+    <style>
+        .rg-body {
+            background-color: #fbfbfb;
+        }
+        
+        .rg-nav {
+            margin: 3rem 8rem;
+        }
+        
+        .rg-card-left {
+            margin: 5.2rem 8rem;
+        }
+        
+        .sign-in:hover {
+            text-decoration: none;
+        }
+        
+        .sign-in-btn {
+            padding: 1.5rem;
+            border-radius: 0;
+            margin-left: 1.5rem;
+        }
+        
+        .sign-up-btn {
+            padding: 1.5rem;
+            border-radius: 0;
+        }
+        
+        .sign-up-btn:hover {
+            background-color: #7ec544;
+            border-color: #7ec544;
+            color: white;
+        }
+        
+        .rg-card {
+            margin: 0 5rem;
+            width: 60%;
+        }
+        
+        .registration-form form {
+            display: grid;
+        }
+        
+        .form-control {
+            display: block;
+            width: 100%;
+            height: auto;
+            padding: .6rem 0 .4rem 0;
+            margin: 0 0 .5rem 0;
+            background-color: transparent;
+            border-radius: 0;
+            font-weight: 400;
+            font-size: 1.25rem;
+            background-clip: padding-box;
+        }
+        
+        form input[type="text"],
+        form input[type="email"],
+        form input[type="password"] {
+            background-color: transparent;
+            border: 0;
+            border-bottom-color: currentcolor;
+            border-bottom-style: none;
+            border-bottom-width: 0px;
+            border-bottom: 1px solid #ced4da;
+            border-radius: 0;
+            outline: 0;
+            -webkit-box-shadow: none;
+            box-shadow: none;
+            transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out, -webkit-box-shadow .15s ease-in-out;
+            color: #616161;
+            /* width: 75%; */
+        }
+        
+        form input[type="text"]:focus,
+        form input[type="email"]:focus,
+        form input[type="password"]:focus {
+            box-shadow: 0 1px 0 0 #616161;
+            border-bottom: 1px solid #616161;
+        }
+        
+        .form-group {
+            margin-left: 1.5rem;
+        }
+        
+        .form-group .form-control {
+            width: 75%;
+            margin-bottom: 2rem;
+        }
+        
+        .fa-circle {
+            margin-right: 2rem;
+        }
+        
+        .btn-success {
+            color: #fff;
+            background-color: #70c22d;
+            border-color: #70c22d;
+        }
+    </style>
+</head>
+
+<body class="rg-body">
+    <div class="row m-0">
+        <div class="col-sm-6">
+            <nav class="navbar navbar-expand-lg navbar-light rg-nav">
+                <a class="navbar-brand" href="#">Navbar</a>
+                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                  <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <ul class="navbar-nav">
+                        <li class="nav-item active">
+                            <a class="nav-link" href="#">Home <span class="sr-only">(current)</span></a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Features</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">Pricing</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link disabled" href="#">Disabled</a>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+
+            <div class="card rg-card-left border-0">
+                <div class="card-body">
+                    <h1 class="card-title display-1 font-weight-bold">Built for the People</h1>
+                    <!-- <h6 class="card-subtitle mb-2 text-muted">Card subtitle</h6> -->
+                    <p class="card-text mt-5">Early flood detection is a system designed to protect people from casualties from flood, that are likely to hamper their entire life.</p>
+                    <!-- <a href="#" class="card-link">Sign Up</a>
+                    <a href="/login" class="sign-in">Sign In</a> -->
+                </div>
+            </div>
+        </div>
+        <div class="col-sm-6">
+            <nav class="navbar navbar-light justify-content-between rg-nav">
+                <a class="navbar-brand"></a>
+                <form class="form-inline">
+                    <button class="btn btn-success sign-up-btn font-weight-bold"><a href="/login" class="text-white sign-in">Sign Up</a></button>
+                    <button type="button" class="btn btn-dark sign-in-btn"><a href="/login" class="text-white sign-in">Sign In</a></button>
+                </form>
+            </nav>
+
+            <div class="card rg-card float-right border-0">
+                <div class="card-body">
+                    <h5 class="card-title display-4 font-weight-bold"><i class="fab fa-gripfire fa-fw d-inline-block"></i><span>Get Started</span></h5>
+                    <!-- <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p> -->
+                    <!-- <a href="#" class="btn btn-primary">Go somewhere</a> -->
+                    <div class="form-group">
+                        {% if messages %}
+                        <ul class="messages">
+                            {% for message in messages %}
+                            <li>
+                                <div class="alert alert-success alert-dismissable">
+                                    {{ message }}
+                                </div>
+                            </li>
+                            {% endfor %}
+                        </ul>
+                        {% endif %}
+                    </div>
+
+                    <div class="registration-form">
+                        <form method="POST" action="" class="form-inline">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <i class="fas fa-circle fa-fw font-weight-bold"></i>{{ form.username}} {{ form.username.errors }}
+                            </div>
+
+                            <div class="form-group">
+                                <i class="fas fa-circle fa-fw font-weight-bold"></i> {{ form.email}} {{ form.email.errors }}
+                            </div>
+
+                            <div class="form-group">
+                                <i class="fas fa-circle fa-fw font-weight-bold"></i> {{ form.first_name}}
+                            </div>
+
+                            <div class="form-group">
+                                <i class="fas fa-circle fa-fw font-weight-bold"></i> {{ form.last_name}}
+                            </div>
+
+                            <div class="form-group">
+                                <i class="fas fa-circle fa-fw font-weight-bold"></i> {{ form.password}}
+                            </div>
+
+                            <div class="form-group">
+                                <i class="fas fa-circle fa-fw font-weight-bold"></i> {{ form.confirm_password}} {{ form.confirm_password.errors }}
+                            </div>
+                            <br />
+                            <button class="btn btn-success sign-up-btn font-weight-bold" type="submit">Sign up for the System</button>
+                        </form>
+                    </div>
+
+                </div>
+            </div>
+        </div>
+
+</body>
+
+
+</html>
