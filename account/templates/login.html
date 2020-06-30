@@ -10,40 +10,67 @@
         <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
         <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" />
         <style>
+            .messages li {
+                list-style-type: none;
+            }
+            
+            .lg-body {
+                background-color: #fbfbfb;
+            }
+            
             .login-body {
                 margin: 5rem;
             }
             
             .login-form form {
                 display: grid;
+                /* margin: 0 15rem; */
             }
             
             .form-control {
                 display: block;
-                width: 100%;
+                width: 100% !important;
                 height: auto;
                 padding: .6rem 0 .4rem 0;
                 margin: 0 0 .5rem 0;
                 background-color: transparent;
-                border-radius: 0;
+                border-radius: 0.25rem;
                 font-weight: 400;
-                font-size: 1.25rem;
+                font-size: 1rem;
                 background-clip: padding-box;
+                padding-left: 1rem;
             }
             
-            .form-group {
-                margin-left: 1.5rem;
+            .lg-card {
+                margin: 2rem 18rem;
             }
             
-            .form-group .form-control {
-                width: 75%;
-                margin-bottom: 2rem;
+            .form-group,
+            .lg-submit {
+                margin: 1.5rem;
+            }
+            
+            .btn-success {
+                color: #fff;
+                background-color: #70c22d;
+                border-color: #70c22d;
+            }
+            
+            .lg-submit:hover {
+                background-color: #7ec544;
+                border-color: #7ec544;
+                color: white;
+            }
+            
+            form input {
+                -webkit-box-shadow: none;
+                box-shadow: none;
             }
         </style>
     </head>
 
-    <body>
-        <div class="container card">
+    <body class="lg-body">
+        <div class="container">
             <div class="login-body text-center">
                 <h1 class="display-1"><i class="fab fa-gripfire fa-fw d-inline-block"></i></h1>
                 <h3>Sign In to System</h3>
@@ -60,18 +87,21 @@
                 </div>
 
 
-                <div class="login-form">
-                    <form method="POST" action="" class="form-inline">
-                        {% csrf_token %}
-                        <div class="form-group">
-                            <input type="text" name="user" class="form-control" placeholder="Enter username:">
-                        </div>
-                        <div class="form-group">
-
-                            <input type="password" name="psk" class="form-control" placeholder="Enter password:">
-                        </div>
-                        <button class="btn btn-primary" type="submit">Submit</button>
-                    </form>
+                <div class="card lg-card">
+                    <div class="login-form">
+                        <form method="POST" action="" class="form-inline">
+                            {% csrf_token %}
+                            <div class="form-group">
+                                <h6 class="font-weight-bold">Username:</h6> <br>
+                                <input type="text" name="user" class="form-control" placeholder="Enter username:">
+                            </div>
+                            <div class="form-group">
+                                <h6 class="font-weight-bold">Password:</h6> <br>
+                                <input type="password" name="psk" class="form-control" placeholder="Enter password:">
+                            </div>
+                            <button class="btn btn-success lg-submit" type="submit">Submit</button>
+                        </form>
+                    </div>
                 </div>
             </div>
         </div>

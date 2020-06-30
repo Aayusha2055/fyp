@@ -6,36 +6,40 @@ from django.core.validators import validate_email
 
 class cust_reg_form(forms.ModelForm):
     username = forms.CharField(widget=forms.TextInput(
-        attrs={'class':'form-control', 'placeholder':'   @username'}
+        attrs={'class':'form-control', 'placeholder':'@username'}
     ), required=True, max_length=50)
     
     email = forms.EmailField(widget=forms.EmailInput(
-        attrs={'class':'form-control', 'placeholder':'   @gmail.com'}
+        attrs={'class':'form-control', 'placeholder':'@gmail.com'}
     ), required=True, max_length=50)
     
-    first_name = forms.CharField(widget=forms.TextInput(
-        attrs={'class':'form-control', 'placeholder':'   @firstname'}
-    ), required=True, max_length=50)
+    # first_name = forms.CharField(widget=forms.TextInput(
+    #     attrs={'class':'form-control', 'placeholder':'   @firstname'}
+    # ), required=True, max_length=50)
     
-    last_name = forms.CharField(widget=forms.TextInput(
-        attrs={'class':'form-control', 'placeholder':'   @lastname'}
-    ), required=True, max_length=50)
+    # last_name = forms.CharField(widget=forms.TextInput(
+    #     attrs={'class':'form-control', 'placeholder':'   @lastname'}
+    # ), required=True, max_length=50)
     
     # dob = forms.DateField(widget=forms.DateInput(
     #     attrs={'class':'form-control','placeholder':'Enter your birthday:'}
     # ), required=True,)
 
+    phone_number = forms.CharField(widget=forms.NumberInput(
+        attrs={'class':'form-control', 'placeholder':'@phone-number'}
+    ), required=True, max_length=50)
+
     password = forms.CharField(widget=forms.PasswordInput(
-        attrs={'class':'form-control', 'placeholder':'   @password'}
+        attrs={'class':'form-control', 'placeholder':'@password'}
     ), required=True, max_length=50)
     
     confirm_password = forms.CharField(widget=forms.PasswordInput(
-        attrs={'class':'form-control', 'placeholder':'   @confirmpassword'}
+        attrs={'class':'form-control', 'placeholder':'@confirmpassword'}
     ), required=True, max_length=50)
 
     class Meta():
         model = User
-        fields = ['username', 'email', 'first_name', 'last_name', 'password']
+        fields = ['username', 'email', 'phone_number', 'password']
 
     
     def clean_username(self):
@@ -67,3 +71,6 @@ class cust_reg_form(forms.ModelForm):
                     raise forms.ValidationError("Passwords should contain at least 8 characters.")
                 if psk.isdigit():
                     raise forms.ValidationError("Passwords should not be all numeric.")
+
+
+    

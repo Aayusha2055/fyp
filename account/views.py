@@ -24,11 +24,12 @@ def custreg(request):
         form = cust_reg_form(request.POST)
         if form.is_valid():
             username = form.cleaned_data['username']
-            first_name = form.cleaned_data['first_name']
-            last_name = form.cleaned_data['last_name']
+            # first_name = form.cleaned_data['first_name']
+            # last_name = form.cleaned_data['last_name']
             email = form.cleaned_data['email']
+            phone_number = form.cleaned_data['phone_number']
             password = form.cleaned_data['password']
-            User.objects.create_user(username=username, first_name=first_name, last_name=last_name, email=email, password=password)
+            User.objects.create_user(username=username, email=email, phone_number= phone_number, password=password)
             usr = auth.authenticate(username=username, password=password)
             auth.login(request, usr)
             return redirect(reverse('welcome'))
@@ -62,4 +63,4 @@ def welcome(request):
 @login_required(login_url="/account/login")
 def logout(request):
     auth.logout(request)
-    return HttpResponseRedirect('/login')
+    return HttpResponseRedirect('/')
