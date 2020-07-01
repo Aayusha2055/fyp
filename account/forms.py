@@ -13,21 +13,21 @@ class cust_reg_form(forms.ModelForm):
         attrs={'class':'form-control', 'placeholder':'@gmail.com'}
     ), required=True, max_length=50)
     
-    # first_name = forms.CharField(widget=forms.TextInput(
-    #     attrs={'class':'form-control', 'placeholder':'   @firstname'}
-    # ), required=True, max_length=50)
+    first_name = forms.CharField(widget=forms.TextInput(
+        attrs={'class':'form-control', 'placeholder':'@firstname'}
+    ), required=True, max_length=50)
     
-    # last_name = forms.CharField(widget=forms.TextInput(
-    #     attrs={'class':'form-control', 'placeholder':'   @lastname'}
-    # ), required=True, max_length=50)
+    last_name = forms.CharField(widget=forms.TextInput(
+        attrs={'class':'form-control', 'placeholder':'@lastname'}
+    ), required=True, max_length=50)
     
     # dob = forms.DateField(widget=forms.DateInput(
     #     attrs={'class':'form-control','placeholder':'Enter your birthday:'}
     # ), required=True,)
 
-    phone_number = forms.CharField(widget=forms.NumberInput(
-        attrs={'class':'form-control', 'placeholder':'@phone-number'}
-    ), required=True, max_length=50)
+    # phone_number = forms.CharField(widget=forms.NumberInput(
+    #     attrs={'class':'form-control', 'placeholder':'@phone-number'}
+    # ), required=True, max_length=50)
 
     password = forms.CharField(widget=forms.PasswordInput(
         attrs={'class':'form-control', 'placeholder':'@password'}
@@ -39,7 +39,7 @@ class cust_reg_form(forms.ModelForm):
 
     class Meta():
         model = User
-        fields = ['username', 'email', 'phone_number', 'password']
+        fields = ['username', 'first_name', 'last_name','email', 'password']
 
     
     def clean_username(self):
