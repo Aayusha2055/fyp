@@ -27,4 +27,5 @@ class Observation(models.Model):
     station = models.CharField(max_length=255,  null=True)
     max_temp = models.CharField(max_length=255, null=True)
     mini_temp = models.CharField(max_length=255, null=True)
-    rainfall_mm = models.CharField(max_length=255, null=True)
+    rainfall_mm = models.FloatField(max_length=255, null=True)
+    status = models.CharField(max_length=255, null=True)

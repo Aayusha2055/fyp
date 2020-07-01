@@ -30,5 +30,5 @@ urlpatterns = [
     url(r'^logout/$', logout),
     #url(r'', custreg),
     path('', views.custreg),
-    path('info/', info),
+    path('info', views.info, name='info'),
 ]

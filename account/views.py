@@ -70,10 +70,10 @@ def logout(request):
 @login_required(login_url="/account/login")
 def info(request):
     observation_all = Observation.objects.all()
-    return render(request, 'info.html' ,  { 'observation_all': observation_all})
+    return render(request, 'info.html', {'observation_all': observation_all})
 
 def crawl(request):
-    browser = webdriver.PhantomJS(executable_path= 'account/phantomjs')
+    browser = webdriver.PhantomJS(executable_path= 'account/phantomjs.exe')
     browser.delete_all_cookies()
     browser.get('http://mfd.gov.np/')
     c = browser.page_source
@@ -83,6 +83,7 @@ def crawl(request):
     max_temp_list = []
     mini_temp_list = []
     rainfall_mm_list = []
+    status_list = []
 
     station = soup.select('td:nth-child(1)')
     max_temp = soup.select('td:nth-child(2)')
@@ -105,13 +106,22 @@ def crawl(request):
 
     for i in rainfall_mm:
         rainfall_mm = (i.text)
-        rainfall_mm_list.append(rainfall_mm)
+        rainfall_mm = rainfall_mm.replace("*",'')
+        if rainfall_mm == 'Traces':
+            rainfall_mm = 1.0
+        rainfall = float(rainfall_mm)
+        if rainfall > 3.3:
+            stat= 'Danger'
+            status_list.append(stat)
+        else:
+            stat = 'Safe'
+            status_list.append(stat)
+        rainfall_mm_list.append(rainfall)
 
     data_length = (len(max_temp_list))
-
     for i in range(0, data_length):
         i = Observation.objects.create(station=station_list[i], max_temp=max_temp_list[i], mini_temp=mini_temp_list[i],
-                                       rainfall_mm=rainfall_mm_list[i])
+                                       rainfall_mm=rainfall_mm_list[i], status=status_list[i])
         i.save()
     observation_all = Observation.objects.all()
     return render(request, 'welcome.html', {'observation_all': observation_all, 'msg': 'crawled'})
