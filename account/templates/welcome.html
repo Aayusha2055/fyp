@@ -1,11 +1,69 @@
 <html>
-  <head> </head>
-  <body>
-    {% if user.is_authenticated %}
+
+<head>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Playfair+Display|Raleway|Roboto&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" /> {% load static %} {% load static %}
+    <link rel="stylesheet" href="{% static 'accounts/style.css'%}">
+
+</head>
+
+<body>
+    {% if user.is_authenticated %} {% if msg == 'crawled' %}
+    <script>
+        alert("Data crawled successfully")
+    </script>
+    {% endif %}
+    <div class="card border-0">
+        <img src="../static/accounts/images/pic.jpg" alt="" class="w-100 img-fluid">
+        <div class="card-img-overlay text-white">
+            <div class="container-fluid wc-container-fluid">
+                <nav class="navbar navbar-light bg-transparent justify-content-between fixed-top wc-nav">
+                    <a class="navbar-brand">Navbar</a>
+                    <form class="form-inline">
+                        <button class="btn btn-success font-weight-bold p-3 mr-5"><a href="/info" class="view-info">View Information</a></button>
+                        <button type="button" class="btn btn-light font-weight-bold p-3"><a href="/" class="send-alert color-ddd">Send Alert</a></button>
+                    </form>
+                </nav>
+            </div>
+            <div class="card-title text-center ">
+                <h1 class="display-1 text-uppercase font-weight-bold">flood in nepal</h1>
+                <h4>Every year, about 2000 people get affected by flood every year.</h4>
+            </div>
+        </div>
+    </div>
     <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p>
+
+    <a href=" {% url 'crawl' %}">Get rainfall data</a><br><br>
+
+    <table border="1">
+        <tr>
+            <th>Station</th>
+            <th>Maximum Temp. (°C)
+            </th>
+            <th>Minimum Temp. (°C)
+            </th>
+            <th>24 hrs Rainfall (mm)
+            </th>
+        </tr>
+
+        {% for observation in observation_all %}
+        <tr>
+            <td>{{ observation.station }}</td>
+            <td>{{ observation.max_temp }}</td>
+            <td>{{ observation.mini_temp }}</td>
+            <td>{{ observation.rainfall_mm }}</td>
+        </tr>
+        {% endfor %}
+    </table>
+
     {% else %}
     <p>Welcome, new user. Please log in.</p>
     {% endif %}
     <a href="/logout/">Logout</a>
-  </body>
+</body>
+
 </html>

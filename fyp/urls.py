@@ -25,8 +25,10 @@ urlpatterns = [
     path('welcome/', views.welcome, name='welcome'),
     url(r'^admin/', admin.site.urls),
     # url(r'^index/$', home),
+    path('crawl', views.crawl, name='crawl'),
     url(r'^login/$', login),
     url(r'^logout/$', logout),
     #url(r'', custreg),
     path('', views.custreg),
+    path('info/', info),
 ]

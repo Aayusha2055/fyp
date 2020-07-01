@@ -1,0 +1,43 @@
+body {
+    font-family: Roboto;
+}
+
+.bg-white {
+    background-color: white;
+    color: black;
+}
+
+a,
+a:hover {
+    color: white;
+    text-decoration: none;
+}
+
+.btn {
+    border-radius: 0;
+}
+
+.color-ddd {
+    color: #5a5757;
+}
+
+.btn-success {
+    color: #fff;
+    background-color: #70c22d;
+    border-color: #70c22d;
+}
+
+.btn-light:hover {
+    color: white !important;
+    background-color: #8c8a8a;
+    border-color: #8c8a8a;
+}
+
+.wc-nav {
+    padding: 3rem;
+    /* margin-bottom: 5rem; */
+}
+
+.wc-container-fluid {
+    margin-bottom: 20rem;
+}
