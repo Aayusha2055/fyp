@@ -41,3 +41,8 @@ a:hover {
 .wc-container-fluid {
     margin-bottom: 20rem;
 }
+
+.fixed-top.scrolled {
+    background-color: #fff !important;
+    transition: background-color 200ms linear;
+}
