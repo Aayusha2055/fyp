@@ -73,7 +73,7 @@ def info(request):
     return render(request, 'info.html', {'observation_all': observation_all})
 
 def crawl(request):
-    browser = webdriver.PhantomJS(executable_path= 'account/phantomjs.exe')
+    browser = webdriver.PhantomJS(executable_path= 'account/phantomjs')
     browser.delete_all_cookies()
     browser.get('http://mfd.gov.np/')
     c = browser.page_source

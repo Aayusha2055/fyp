@@ -11,14 +11,21 @@ a,
 a:hover {
     color: white;
     text-decoration: none;
+    outline: none;
+    text-decoration: none;
 }
 
 .btn {
     border-radius: 0;
 }
 
-.color-ddd {
+.color-ddd,
+.text-black {
     color: #5a5757;
+}
+
+.text-green {
+    color: #70c22d;
 }
 
 .btn-success {
@@ -34,10 +41,60 @@ a:hover {
 }
 
 .wc-nav {
-    padding: 3rem;
+    padding: 2rem;
     /* margin-bottom: 5rem; */
 }
 
 .wc-container-fluid {
     margin-bottom: 20rem;
+}
+
+.header {
+    width: 100%;
+    /* padding: 0; */
+    /* z-index: 10000; */
+    transition: all 0s ease-in-out;
+    height: auto;
+    background-color: transparent;
+    /* text-align: center; */
+    line-height: 20px;
+}
+
+.header.active {
+    background: #000000de !important;
+    -webkit-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    -moz-box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+    box-shadow: 0 1px 5px rgba(0, 0, 0, 0.25);
+}
+
+.alert-modal:hover {
+    color: white;
+}
+
+.modal a.close-modal {
+    top: 0.5rem !important;
+    right: 0.5rem !important;
+}
+
+.sign-up-btn {
+    padding: 1rem;
+    border-radius: 0;
+}
+
+.sign-up-btn:hover {
+    background-color: #7ec544;
+    border-color: #7ec544;
+    color: white;
+}
+
+.sign-in:hover {
+    text-decoration: none;
+}
+
+.sign-in-btn {
+    padding: 1rem;
+    border-radius: 0;
+    margin-left: 1.5rem;
+    outline: none;
+    text-decoration: none;
 }
