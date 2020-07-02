@@ -1,9 +1,12 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
+from django.core.mail import send_mail
 
 from django.shortcuts import render
 
 from django.http import HttpRequest, HttpResponseRedirect, request
+from django.template.loader import render_to_string
+
 from .models import *
 from .forms import *
 from django.contrib.auth.models import User
@@ -135,4 +138,13 @@ def location_add(request):
     info = request.POST['info']
     location_store = Alert.objects.create(location=location, number= number, housenum=housenum, info=info , user=user)
     location_store.save()
+    msg_html = render_to_string('email.html', {'username': user.username, 'location': location, 'number': number, 'housenum': housenum , 'info': info})
+    send_mail(
+        'ALERT| Action Required',
+        'Dear Admin',
+        'aayusha.paudel@deerwalk.edu.np',
+        ['aayusha.paudel@deerwalk.edu.np'],
+        html_message=msg_html,
+        fail_silently=False,
+    )
     return render(request, 'welcome.html' , {'msg' : "alert sent"})
