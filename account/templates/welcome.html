@@ -30,6 +30,11 @@
     <script>
         alert("Data crawled successfully")
     </script>
+        {% elif msg == "alert sent" %}
+            <script>
+        alert("alert sent")
+    </script>
+        alert sent
     {% endif %}
     <div class="card border-0">
         <img src="../static/accounts/images/pic.jpg" alt="" class="w-100 img-fluid">
@@ -57,7 +62,8 @@
                         <!-- <button type="button" class="btn btn-success"></button><a class="navbar-brand">{{ user.get_username }}</a></button> -->
 
                         <div id="ex1" class="modal">
-                            <form class="m-3">
+                            <form class="m-3" method="POST" action="{% url 'location_add' %}" >
+                                {% csrf_token %}
                                 <p class="w-100 d-flex justify-content-center mt-3 mb-3 h5">Please provide us following information.</p>
                                 <div class="form-group text-center">
                                     <label for="InputLocation" class="h6">Current Location.</label>
@@ -66,17 +72,17 @@
                                 </div>
                                 <div class="form-group text-center">
                                     <label for="InputPNumber" class="h6">Phone Number.</label>
-                                    <input type="text" name="number" class="form-control" id="InputPNumber" placeholder="Phone Number">
+                                    <input type="text" name="number" class="form-control" id="InputPNumber" placeholder="Phone Number" >
                                 </div>
 
                                 <div class="form-group text-center">
                                     <label for="InputHNumber" class="h6">House Number.</label>
-                                    <input type="number" name="housenum" class="form-control" id="InputHNumber" placeholder="House Number">
+                                    <input type="number" name="housenum" class="form-control" id="InputHNumber" placeholder="House Number" >
                                 </div>
 
                                 <div class="form-group text-center">
                                     <label for="InputInfo" class="h6">Additional Information.</label>
-                                    <input type="text" name="info" class="form-control" id="InputInfo" placeholder="Additional Information">
+                                    <input type="text" name="info" class="form-control" id="InputInfo" placeholder="Additional Information" >
                                 </div>
 
                                 <div class="submit text-center w-100">

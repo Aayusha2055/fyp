@@ -7,3 +7,8 @@ from django.contrib import admin
 from .models import *
 
 admin.site.register(products)
+admin.site.register(Alert)
+
+admin.site.site_header = "Flood detection system"
+admin.site.site_title = "Admin Portal"
+admin.site.index_title = "Welcome to flood detection system"

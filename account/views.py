@@ -130,7 +130,9 @@ def crawl(request):
 def location_add(request):
     user = request.user
     location = request.POST['location']
-    print(location)
-    location_store = Alert.objects.create(location=location, user=user)
+    number = request.POST['number']
+    housenum = request.POST['housenum']
+    info = request.POST['info']
+    location_store = Alert.objects.create(location=location, number= number, housenum=housenum, info=info , user=user)
     location_store.save()
     return render(request, 'welcome.html' , {'msg' : "alert sent"})
