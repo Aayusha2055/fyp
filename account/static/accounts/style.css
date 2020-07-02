@@ -98,3 +98,17 @@ a:hover {
     outline: none;
     text-decoration: none;
 }
+
+.welcome-section-2 .card-group {
+    padding: 0 5rem;
+}
+
+.welcome-section-2 .card-group .card {
+    margin: 0 4rem;
+    border: 1px solid #ddd;
+    padding: 1rem;
+}
+
+.wc-section-2 {
+    margin-top: 5rem;
+}

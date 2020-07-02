@@ -6,6 +6,7 @@ from django.shortcuts import render
 
 from django.http import HttpRequest, HttpResponseRedirect, request
 from django.template.loader import render_to_string
+from django.http import HttpResponse
 
 from .models import *
 from .forms import *
@@ -19,7 +20,7 @@ from django.views.decorators.csrf import csrf_protect
 from bs4 import BeautifulSoup
 from selenium import webdriver
 
-
+import account.arduinoData as arduinoData
 
 
 
@@ -148,3 +149,10 @@ def location_add(request):
         fail_silently=False,
     )
     return render(request, 'welcome.html' , {'msg' : "alert sent"})
+
+
+
+def getArduinoData(request):
+    data = arduinoData.begin()
+    print(data)
+    return HttpResponse(data, content_type="text/plain")

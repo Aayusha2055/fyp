@@ -30,12 +30,11 @@
     <script>
         alert("Data crawled successfully")
     </script>
-        {% elif msg == "alert sent" %}
-            <script>
+    {% elif msg == "alert sent" %}
+    <script>
         alert("alert sent")
     </script>
-        alert sent
-    {% endif %}
+    alert sent {% endif %}
     <div class="card border-0">
         <img src="../static/accounts/images/pic.jpg" alt="" class="w-100 img-fluid">
         <div class="card-img-overlay text-white">
@@ -62,7 +61,7 @@
                         <!-- <button type="button" class="btn btn-success"></button><a class="navbar-brand">{{ user.get_username }}</a></button> -->
 
                         <div id="ex1" class="modal">
-                            <form class="m-3" method="POST" action="{% url 'location_add' %}" >
+                            <form class="m-3" method="POST" action="{% url 'location_add' %}">
                                 {% csrf_token %}
                                 <p class="w-100 d-flex justify-content-center mt-3 mb-3 h5">Please provide us following information.</p>
                                 <div class="form-group text-center">
@@ -72,17 +71,17 @@
                                 </div>
                                 <div class="form-group text-center">
                                     <label for="InputPNumber" class="h6">Phone Number.</label>
-                                    <input type="text" name="number" class="form-control" id="InputPNumber" placeholder="Phone Number" >
+                                    <input type="text" name="number" class="form-control" id="InputPNumber" placeholder="Phone Number">
                                 </div>
 
                                 <div class="form-group text-center">
                                     <label for="InputHNumber" class="h6">House Number.</label>
-                                    <input type="number" name="housenum" class="form-control" id="InputHNumber" placeholder="House Number" >
+                                    <input type="number" name="housenum" class="form-control" id="InputHNumber" placeholder="House Number">
                                 </div>
 
                                 <div class="form-group text-center">
                                     <label for="InputInfo" class="h6">Additional Information.</label>
-                                    <input type="text" name="info" class="form-control" id="InputInfo" placeholder="Additional Information" >
+                                    <input type="text" name="info" class="form-control" id="InputInfo" placeholder="Additional Information">
                                 </div>
 
                                 <div class="submit text-center w-100">
@@ -105,7 +104,7 @@
     <!-- Card group -->
 
     <div class="welcome-section-2">
-        <div class="jumbotron jumbotron-fluid bg-white">
+        <div class="jumbotron jumbotron-fluid bg-white mb-0">
             <div class="container text-center">
                 <h2 class="display-4 text-green font-weight-bold">Readers Digest</h2>
                 <p class="lead">Join us and get the latest updates</p>
@@ -162,8 +161,56 @@
         </div>
     </div>
 
+    <div class="wc-section-2">
 
-    <div class="container">
+        <!-- News jumbotron -->
+        <div class="jumbotron text-center hoverable p-4">
+            <div class="container">
+                <div class="row">
+
+                    <!-- Grid column -->
+                    <div class="col-md-4 offset-md-1 mx-3 my-3">
+
+                        <!-- Featured image -->
+                        <div class="view overlay">
+                            <img src="../static/accounts/images/pic2.jpg" class="img-fluid" alt="Sample image for first version of blog listing">
+                            <a>
+                                <div class="mask rgba-white-slight"></div>
+                            </a>
+                        </div>
+
+                    </div>
+                    <!-- Grid column -->
+
+                    <!-- Grid column -->
+                    <div class="col-md-7 text-md-left ml-3 mt-3">
+
+                        <!-- Excerpt -->
+                        <a href="#!" class="green-text">
+                            <h6 class="h6 pb-1"><i class="fas fa-desktop pr-1"></i> Work</h6>
+                        </a>
+
+                        <h4 class="h4 mb-4">This is title of the news</h4>
+
+                        <p class="font-weight-normal">Sed ut perspiciatis unde omnis iste natus error sit voluptatem accusantium doloremque, totam rem aperiam, eaque ipsa quae ab illo inventore veritatis et quasi architecto beatae vitae dicta sunt explicabo. Nemo enim ipsam voluptatem
+                            quia voluptas sit aspernatur.</p>
+                        <p class="font-weight-normal">by <a><strong>Carine Fox</strong></a>, 19/08/2016</p>
+
+                        <a class="btn btn-success">Read more</a>
+
+                    </div>
+                    <!-- Grid column -->
+                </div>
+            </div>
+        </div>
+        <!-- Grid row -->
+
+        <!-- Grid row -->
+
+    </div>
+    <!-- News jumbotron -->
+    </div>
+    <!-- <div class="container">
         <div class="row">
             <div class="col-sm-4">
                 <button class="btn btn-success font-weight-bold p-3 mr-5"><a href="{% url 'crawl' %}" class="view-info">Get rainfall data</a></button>
@@ -204,7 +251,7 @@
             </tr>
             {% endfor %}
         </table>
-    </div>
+    </div> -->
     {% else %}
     <p>Welcome, new user. Please log in.</p>
     {% endif %}
