@@ -18,9 +18,15 @@
 </head>
 
 <body>
-{% if user.is_authenticated %} {% if msg == 'crawled' %}
+{% if user.is_authenticated %}
+
+    {% if msg == 'crawled' %}
     <script>
         alert("Data crawled successfully")
+    </script>
+        {% elif msg == 'alert sent' %}
+            <script>
+        alert("Alert sent successfully")
     </script>
 {% endif %}
     <div class="card border-0">
@@ -98,17 +104,24 @@
   <div class="modal-dialog" role="document">
     <div class="modal-content">
       <div class="modal-header">
-        <h5 class="modal-title" id="exampleModalLabel">Location</h5>
+        <h5 class="modal-title" id="exampleModalLabel">Location </h5>
         <button type="button" class="close" data-dismiss="modal" aria-label="Close">
           <span aria-hidden="true">&times;</span>
         </button>
       </div>
       <div class="modal-body">
-        ...
+
+          <form action="{% url 'location_add' %}" method="POST"
+                      class="form-inline mt-2 mt-md-0 right topmargin25">
+                    {% csrf_token %}
+                    <input class="form-control mr-sm-2" type="text" placeholder="Location" aria-label="Search"
+                           name="location">
+                    <button class="btn btn-outline-dark my-2 my-sm-0" type="submit" value="search">Send</button>
+                </form>
       </div>
       <div class="modal-footer">
         <button type="button" class="btn btn-secondary" data-dismiss="modal">Close</button>
-        <button type="button" class="btn btn-primary">Save changes</button>
+
       </div>
     </div>
   </div>

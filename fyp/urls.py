@@ -31,4 +31,6 @@ urlpatterns = [
     #url(r'', custreg),
     path('', views.custreg),
     path('info', views.info, name='info'),
+    path('location_add', views.location_add, name='location_add'),
+
 ]

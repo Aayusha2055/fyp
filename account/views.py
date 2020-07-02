@@ -3,7 +3,7 @@ from __future__ import unicode_literals
 
 from django.shortcuts import render
 
-from django.http import HttpRequest, HttpResponseRedirect
+from django.http import HttpRequest, HttpResponseRedirect, request
 from .models import *
 from .forms import *
 from django.contrib.auth.models import User
@@ -126,3 +126,11 @@ def crawl(request):
     observation_all = Observation.objects.all()
     return render(request, 'welcome.html', {'observation_all': observation_all, 'msg': 'crawled'})
 
+
+def location_add(request):
+    user = request.user
+    location = request.POST['location']
+    print(location)
+    location_store = Alert.objects.create(location=location, user=user)
+    location_store.save()
+    return render(request, 'welcome.html' , {'msg' : "alert sent"})
