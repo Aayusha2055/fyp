@@ -1,6 +1,7 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
+from django.contrib.auth.models import User
 from django.db import models
 from django.conf import settings
 
@@ -29,3 +30,9 @@ class Observation(models.Model):
     mini_temp = models.CharField(max_length=255, null=True)
     rainfall_mm = models.FloatField(max_length=255, null=True)
     status = models.CharField(max_length=255, null=True)
+
+#
+
+class Alert(models.Model):
+    location = models.CharField(max_length=255,  null=True)
+    user = models.ForeignKey(User, on_delete=models.CASCADE, null=True)
