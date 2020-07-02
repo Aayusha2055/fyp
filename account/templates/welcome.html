@@ -7,9 +7,22 @@
     <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
     <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" /> {% load static %} {% load static %}
-    <link rel="stylesheet" href="{% static 'accounts/style.css'%}">
-    <script src="{% static 'accounts/script.js' %}"></script>
+    <link rel="stylesheet" href="{% static 'accounts/style.css' %}">
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
 
+    <!-- jQuery Modal -->
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
+    <link rel="stylesheet" href="/node_modules/owl.carousel/dist/assets/owl.carousel.min.css" />
+    <link rel="stylesheet" href="/bower_components/owl.carousel/dist/assets/owl.carousel.min.css" />
+    <script src="/node_modules/jquery/dist/jquery.js"></script>
+    <script src="/node_modules/owl.carousel/dist/owl.carousel.min.js"></script>
+
+    <script src="/bower_components/jquery/dist/jquery.js"></script>
+    <script src="/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
+    <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
 </head>
 
 <body>
@@ -21,13 +34,57 @@
     <div class="card border-0">
         <img src="../static/accounts/images/pic.jpg" alt="" class="w-100 img-fluid">
         <div class="card-img-overlay text-white">
-            <div class="container-fluid wc-container-fluid">
-                <nav class="navbar navbar-light bg-transparent justify-content-between fixed-top wc-nav">
-                    <a class="navbar-brand">Navbar</a>
-                    <form class="form-inline">
+            <div class="container wc-container-fluid">
+                <nav class="navbar navbar-light bg-transparent fixed-top wc-nav header">
+                    <div class="inline-block">
+
                         <button class="btn btn-success font-weight-bold p-3 mr-5"><a href="/info" class="view-info">View Information</a></button>
-                        <button type="button" class="btn btn-light font-weight-bold p-3"><a href="/" class="send-alert color-ddd">Send Alert</a></button>
-                    </form>
+                        <button type="button" class="btn btn-light font-weight-bold alert-modal p-3"><a href="#ex1" rel="modal:open" class="text-black">Send Alert</a></button>
+                    </div>
+
+                    <div class="d-inline-block">
+                        <!-- <button class="btn btn-success sign-up-btn font-weight-bold"><a href="/" class="text-white sign-in">Sign Up</a></button>
+                        <button type="button" class="btn btn-light sign-in-btn"><a href="/login" class="text-black sign-in">Sign In</a></button> -->
+                        <div class="btn-group">
+                            <button type="button" class="btn btn-success dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                {{ user.get_username }}
+                            </button>
+                            <div class="dropdown-menu">
+                                <a class="dropdown-item" href="/logout">Logout</a>
+
+                            </div>
+                        </div>
+                        <!-- <button type="button" class="btn btn-success"></button><a class="navbar-brand">{{ user.get_username }}</a></button> -->
+
+                        <div id="ex1" class="modal">
+                            <form class="m-3">
+                                <p class="w-100 d-flex justify-content-center mt-3 mb-3 h5">Please provide us following information.</p>
+                                <div class="form-group text-center">
+                                    <label for="InputLocation" class="h6">Current Location.</label>
+                                    <input type="text" class="form-control" id="InputLocation" placeholder="Current Location" name="location">
+
+                                </div>
+                                <div class="form-group text-center">
+                                    <label for="InputPNumber" class="h6">Phone Number.</label>
+                                    <input type="text" name="number" class="form-control" id="InputPNumber" placeholder="Phone Number">
+                                </div>
+
+                                <div class="form-group text-center">
+                                    <label for="InputHNumber" class="h6">House Number.</label>
+                                    <input type="number" name="housenum" class="form-control" id="InputHNumber" placeholder="House Number">
+                                </div>
+
+                                <div class="form-group text-center">
+                                    <label for="InputInfo" class="h6">Additional Information.</label>
+                                    <input type="text" name="info" class="form-control" id="InputInfo" placeholder="Additional Information">
+                                </div>
+
+                                <div class="submit text-center w-100">
+                                    <button class="btn btn-success font-weight-bold p-3 w-100">Submit Information</button>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
                 </nav>
             </div>
             <div class="card-title text-center ">
@@ -36,36 +93,117 @@
             </div>
         </div>
     </div>
-    <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p>
+    <!-- {# -->
+    <!-- <p>Welcome, {{ user.get_username }}. Thanks for logging in.</p>#} -->
+    <br>
+    <!-- Card group -->
 
-    <a href=" {% url 'crawl' %}">Get rainfall data</a><br><br>
+    <div class="welcome-section-2">
+        <div class="jumbotron jumbotron-fluid bg-white">
+            <div class="container text-center">
+                <h2 class="display-4 text-green font-weight-bold">Readers Digest</h2>
+                <p class="lead">Join us and get the latest updates</p>
+            </div>
+        </div>
+        <div class="card-group">
+            <div class="card mb-4">
+                <div class="view overlay">
+                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/49.jpg" alt="Card image cap">
+                    <a href="#!">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
 
-    <table border="1">
-        <tr>
-            <th>Station</th>
-            <th>Maximum Temp. (°C)
-            </th>
-            <th>Minimum Temp. (°C)
-            </th>
-            <th>24 hrs Rainfall (mm)
-            </th>
-        </tr>
+                <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
+                    </p>
+                    <button type="button" class="btn btn-primary btn-md">Read more</button>
+                </div>
+            </div>
 
-        {% for observation in observation_all %}
-        <tr>
-            <td>{{ observation.station }}</td>
-            <td>{{ observation.max_temp }}</td>
-            <td>{{ observation.mini_temp }}</td>
-            <td>{{ observation.rainfall_mm }}</td>
-        </tr>
-        {% endfor %}
-    </table>
+            <div class="card mb-4">
+                <div class="view overlay">
+                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/49.jpg" alt="Card image cap">
+                    <a href="#!">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
 
+                <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
+                    </p>
+                    <button type="button" class="btn btn-primary btn-md">Read more</button>
+                </div>
+            </div>
+
+            <div class="card mb-4">
+                <div class="view overlay">
+                    <img class="card-img-top" src="https://mdbootstrap.com/img/Photos/Others/images/49.jpg" alt="Card image cap">
+                    <a href="#!">
+                        <div class="mask rgba-white-slight"></div>
+                    </a>
+                </div>
+
+                <div class="card-body">
+                    <h4 class="card-title">Card title</h4>
+                    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.
+                    </p>
+                    <button type="button" class="btn btn-primary btn-md">Read more</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+
+    <div class="container">
+        <div class="row">
+            <div class="col-sm-4">
+                <button class="btn btn-success font-weight-bold p-3 mr-5"><a href="{% url 'crawl' %}" class="view-info">Get rainfall data</a></button>
+
+            </div>
+            <div class="col-sm-6">
+                <h2>Observation in different cities</h2>
+
+            </div>
+        </div>
+        <table class="table table-striped">
+            <tr>
+                <th>Station</th>
+                <th>Maximum Temp. (°C)
+                </th>
+                <th>Minimum Temp. (°C)
+                </th>
+                <th>24 hrs Rainfall (mm)
+                </th>
+                <th>Status
+                </th>
+            </tr>
+
+            {% for observation in observation_all %} {% if observation.status == 'Danger' %}
+            <tr>
+                <td class="table-danger">{{ observation.station }}</td>
+                <td class="table-danger">{{ observation.max_temp }}</td>
+                <td class="table-danger">{{ observation.mini_temp }}</td>
+                <td class="table-danger">{{ observation.rainfall_mm }}</td>
+                <td class="table-danger">{{ observation.status }}</td>
+                {% else %}
+                <td>{{ observation.station }}</td>
+                <td>{{ observation.max_temp }}</td>
+                <td>{{ observation.mini_temp }}</td>
+                <td>{{ observation.rainfall_mm }}</td>
+                <td>{{ observation.status }}</td>
+                {% endif %}
+            </tr>
+            {% endfor %}
+        </table>
+    </div>
     {% else %}
     <p>Welcome, new user. Please log in.</p>
     {% endif %}
     <a href="/logout/">Logout</a>
 </body>
-
+<script src="{% static 'accounts/script.js' %}"></script>
 
 </html>
