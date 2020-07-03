@@ -8,6 +8,7 @@ from .models import *
 
 admin.site.register(products)
 admin.site.register(Alert)
+admin.site.register(Profile)
 
 admin.site.site_header = "Flood detection system"
 admin.site.site_title = "Admin Portal"

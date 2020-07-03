@@ -33,8 +33,9 @@ def custreg(request):
             first_name = form.cleaned_data['first_name']
             last_name = form.cleaned_data['last_name']
             email = form.cleaned_data['email']
+            phone_number = form.cleaned_data['phone_number']
             password = form.cleaned_data['password']
-            User.objects.create_user(username=username, first_name=first_name, last_name=last_name, email=email, password=password)
+            User.objects.create_user(username=username, first_name=first_name, last_name=last_name, email=email, phone_number=phone_number, password=password)
             usr = auth.authenticate(username=username, password=password)
             auth.login(request, usr)
             return redirect(reverse('welcome'))
