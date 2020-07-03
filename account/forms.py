@@ -25,9 +25,9 @@ class cust_reg_form(forms.ModelForm):
     #     attrs={'class':'form-control','placeholder':'Enter your birthday:'}
     # ), required=True,)
 
-    # phone_number = forms.CharField(widget=forms.NumberInput(
-    #     attrs={'class':'form-control', 'placeholder':'@phone-number'}
-    # ), required=True, max_length=50)
+    phone_number = forms.CharField(widget=forms.NumberInput(
+        attrs={'class':'form-control', 'placeholder':'@phone-number'}
+    ), required=True, max_length=10)
 
     password = forms.CharField(widget=forms.PasswordInput(
         attrs={'class':'form-control', 'placeholder':'@password'}

@@ -20,8 +20,8 @@ class products(models.Model):
         verbose_name_plural = "Products"
 
 class Profile(models.Model):
-    user = models.onetoonefield(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
-    phone_number = models.IntegerField(max_length=10, null=True)
+    user = models.OneToOneField(settings.AUTH_USER_MODEL, on_delete=models.CASCADE)
+    phone_number = models.IntegerField(null=True)
 
     def __str__(self):
         return self.phone_number
