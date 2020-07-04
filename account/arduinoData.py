@@ -2,6 +2,7 @@ import serial
 import serial.tools.list_ports
 import re
 import json
+from random import randint
 
 
 def getPorts():
@@ -11,7 +12,7 @@ def getPorts():
         ports.append(port)
     return ports
 
-
+"""
 def begin():
     ports = getPorts()
     json_data = []
@@ -41,3 +42,11 @@ def begin():
         break
 
     return json.dumps(json_data)
+"""
+
+def begin():
+    data = [
+        randint(0, 15),
+        randint(5,254)
+    ]
+    return json.dumps(data)

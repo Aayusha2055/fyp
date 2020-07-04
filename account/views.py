@@ -33,9 +33,9 @@ def custreg(request):
             first_name = form.cleaned_data['first_name']
             last_name = form.cleaned_data['last_name']
             email = form.cleaned_data['email']
-            phone_number = form.cleaned_data['phone_number']
+            # phone_number = form.cleaned_data['phone_number']
             password = form.cleaned_data['password']
-            User.objects.create_user(username=username, first_name=first_name, last_name=last_name, email=email, phone_number=phone_number, password=password)
+            User.objects.create_user(username=username, first_name=first_name, last_name=last_name, email=email, password=password)
             usr = auth.authenticate(username=username, password=password)
             auth.login(request, usr)
             return redirect(reverse('welcome'))
@@ -129,7 +129,7 @@ def crawl(request):
                                        rainfall_mm=rainfall_mm_list[i], status=status_list[i])
         i.save()
     observation_all = Observation.objects.all()
-    return render(request, 'welcome.html', {'observation_all': observation_all, 'msg': 'crawled'})
+    return render(request, 'info.html', {'observation_all': observation_all, 'msg': 'crawled'})
 
 
 def location_add(request):

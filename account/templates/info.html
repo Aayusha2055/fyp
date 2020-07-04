@@ -1,30 +1,90 @@
 <html>
 
 <head>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
-    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Abril+Fatface|Playfair+Display|Raleway|Roboto&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Open+Sans:300,400,600,700,800" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Quicksand:400,700&display=swap" rel="stylesheet">
-    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.1.1/css/bootstrap.min.css" integrity="sha384-WskhaSGFgHYWDcbwN70/dfYBj47jz9qbsMId/iRN3ewGhXQFZCSftd1LZCfmhktB" crossorigin="anonymous" /> {% load static %} {% load static %}
+    {% load static %} {% load static %}
     <link rel="stylesheet" href="{% static 'accounts/info.css' %}">
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.0.0/jquery.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.4/chartist.min.css">
-    <!-- jQuery Modal -->
-    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.js"></script>
-    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery-modal/0.9.1/jquery.modal.min.css" />
-    <link rel="stylesheet" href="/node_modules/owl.carousel/dist/assets/owl.carousel.min.css" />
-    <link rel="stylesheet" href="/bower_components/owl.carousel/dist/assets/owl.carousel.min.css" />
-    <script src="/node_modules/jquery/dist/jquery.js"></script>
-    <script src="/node_modules/owl.carousel/dist/owl.carousel.min.js"></script>
-    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
-    <script src="/bower_components/jquery/dist/jquery.js"></script>
-    <script src="/bower_components/owl.carousel/dist/owl.carousel.min.js"></script>
+
+    <!-- bootstrap -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
     <script src="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/js/bootstrap.min.js" integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl" crossorigin="anonymous"></script>
+
+
+    <!-- font-awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.11.2/css/all.min.css">
+    <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.2.0/css/font-awesome.min.css" rel="stylesheet">
+
+    <!-- chartjs -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.4/chartist.min.css">
+    <script src="https://cdn.jsdelivr.net/npm/chart.js@2.8.0"></script>
+
+    <!-- leaflet -->
     <link rel="stylesheet" href="https://unpkg.com/leaflet@1.6.0/dist/leaflet.css" integrity="sha512-xwE/Az9zrjBIphAcBb3F6JVqxf46+CDLwfLMHloNu6KEQCAWi6HcDUbeOfBIptF7tcCzusKFjFw2yuvEpDL9wQ==" crossorigin="" />
     <script src="https://unpkg.com/leaflet@1.6.0/dist/leaflet.js" integrity="sha512-gZwIG9x3wUXg2hdXF6+rVkLF/0Vi9U8D2Ntg4Ga5I5BZpVkVxlJWbSQtXPSiUTtC0TjtGOmxa1AJPuV0CPthew==" crossorigin=""></script>
+
+    <!-- jquery -->
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js" integrity="sha256-4+XzXVhsDmqanXGHaHvgh1gMQKX40OUvDEBTu8JcmNs=" crossorigin="anonymous"></script>
+
+    <style>
+        .leaflet-bottom {
+            display: none;
+        }
+        
+        .navbar-expand-lg .navbar-nav .dropdown-menu {
+            left: -11rem !important;
+        }
+        
+        #map {
+            width: 100%;
+            height: 70vh;
+        }
+        
+        #map .gridTileCoordinates {
+            margin: 0;
+            position: absolute;
+            width: 100%;
+            padding: 10px;
+            z-index: 9;
+        }
+        
+        #map .gridTileCoordinates .gridTileZoom {
+            display: flex;
+            position: absolute;
+            height: 100%;
+            width: 100%;
+            justify-content: center;
+            align-items: center;
+            z-index: 8;
+        }
+        
+        #map .gridTileCoordinates .gridTileZoom .leaflet-zoom-control {
+            width: 60px;
+            height: 22px;
+            text-align: center;
+            font: bold 12px/20px Tahoma, Verdana, sans-serif;
+            background-color: white;
+            cursor: default;
+        }
+        
+        .leaflet-touch .leaflet-control-layers,
+        .leaflet-touch .leaflet-bar {
+            padding: 0.5rem;
+            background-color: white;
+        }
+        
+        .btn-success {
+            background-color: #7ec544;
+            border-color: #7ec544;
+            color: white;
+        }
+        
+        .view-info {
+            outline: none;
+            text-decoration: none;
+            text-align: justify;
+        }
+    </style>
 </head>
 
 <body>
@@ -33,39 +93,33 @@
     <body class="fixed-nav sticky-footer bg-dark" id="page-top">
         <!-- Navigation-->
         <nav class="navbar navbar-expand-lg navbar-dark bg-dark fixed-top" id="mainNav">
-            <a class="navbar-brand" href="index.html">FWS</a>
+            <a class="navbar-brand" href="/info">FWS</a>
             <button class="navbar-toggler navbar-toggler-right" type="button" data-toggle="collapse" data-target="#navbarResponsive" aria-controls="navbarResponsive" aria-expanded="false" aria-label="Toggle navigation">
         <span class="navbar-toggler-icon"></span>
       </button>
             <div class="collapse navbar-collapse" id="navbarResponsive">
                 <ul class="navbar-nav navbar-sidenav" id="exampleAccordion">
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Dashboard">
-                        <a class="nav-link" href="index.html">
+                        <a class="nav-link" href="#dashboard">
                             <i class="fa fa-fw fa-dashboard"></i>
                             <span class="nav-link-text">Dashboard</span>
                         </a>
                     </li>
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
-                        <a class="nav-link" href="charts.html">
+                        <a class="nav-link" href="#chart">
                             <i class="fa fa-fw fa-area-chart"></i>
                             <span class="nav-link-text">Charts</span>
                         </a>
                     </li>
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Tables">
-                        <a class="nav-link" href="tables.html">
+                        <a class="nav-link" href="#table">
                             <i class="fa fa-fw fa-table"></i>
                             <span class="nav-link-text">Tables</span>
                         </a>
                     </li>
 
                 </ul>
-                <ul class="navbar-nav sidenav-toggler">
-                    <li class="nav-item">
-                        <a class="nav-link text-center" id="sidenavToggler">
-                            <i class="fa fa-fw fa-angle-left"></i>
-                        </a>
-                    </li>
-                </ul>
+
                 <ul class="navbar-nav ml-auto">
 
                     <li class="nav-item dropdown">
@@ -107,8 +161,8 @@
                                 <span class="small float-right text-muted">11:21 AM</span>
                                 <div class="dropdown-message small">This is an automated server response message. All systems are online.</div>
                             </a>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item small" href="#">View all alerts</a>
+                            <!-- <div class="dropdown-divider"></div> -->
+                            <!-- <a class="dropdown-item small" href="#">View all alerts</a> -->
                         </div>
                     </li>
 
@@ -119,187 +173,306 @@
                 </ul>
             </div>
         </nav>
-        <div class="content-wrapper">
+        <div class="content-wrapper" id="dashboard">
             <div class="container-fluid">
                 <!-- Area Chart Example-->
                 <div class="card mb-3">
                     <div class="card-header">
-                        <i class="fa fa-area-chart"></i> Map of Nepal</div>
+                        <i class="fa fa-area-chart"></i>Death Toll Count - Latest Update (2019)</div>
                     <div class="card-body">
-                        <div id="mapid"></div>
+                        <div id="map"></div>
                     </div>
-                    <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                    <div class="card-footer small text-muted">Latest Update</div>
                 </div>
+
+
                 <div class="row">
                     <div class="col-lg-12">
-                        <!-- Example Bar Chart Card-->
-                        <div class="card mb-3">
-                            <div class="card-header">
-                                <i class="fa fa-bar-chart"></i> Water flow Chart</div>
-                            <div class="card-body">
-                                <div class="ct-chart ct-perfect-fourth" style="height: 500px;" id="waterFlowChart"></div>
-                            </div>
-                            <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
-                        </div>
-                        <!-- </div> -->
-
-
-                        <div class="col-lg-12">
-                            <!-- Example Pie Chart Card-->
+                        <div id="chart">
                             <div class="card mb-3">
                                 <div class="card-header">
-                                    <i class="fa fa-pie-chart"></i> UltraSonic Chart</div>
+                                    <i class="fa fa-bar-chart"></i> Water flow Chart</div>
                                 <div class="card-body">
-                                    <div class="ct-chart ct-perfect-fourth" style="height: 500px;" id="ultrasonicChart"></div>
+                                    <div class="ct-chart ct-perfect-fourth" id="waterFlowChart"></div>
                                 </div>
-                                <div class="card-footer small text-muted">Updated yesterday at 11:59 PM</div>
+                                <div class="card-footer small text-muted">Latest Update</div>
                             </div>
-
-                            <!-- </div> -->
                         </div>
-                        <!-- /.container-fluid-->
-                        <!-- /.content-wrapper-->
-                        <footer class="sticky-footer">
-                            <div class="container">
-                                <div class="text-center">
-                                    <small>Copyright © Your Website 2018</small>
-                                </div>
-                            </div>
-                        </footer>
-                        <!-- Scroll to Top Button-->
                         <a class="scroll-to-top rounded" href="#page-top">
                             <i class="fa fa-angle-up"></i>
                         </a>
-                        <!-- Logout Modal-->
-                        <!-- <div class="modal fade" id="exampleModal" tabindex="-1" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                <div class="modal-dialog" role="document">
-                    <div class="modal-content">
-                        <div class="modal-header">
-                            <h5 class="modal-title" id="exampleModalLabel">Ready to Leave?</h5>
-                            <button class="close" type="button" data-dismiss="modal" aria-label="Close">
-                <span aria-hidden="true">×</span>
-              </button>
-                        </div>
-                        <div class="modal-body">Select "Logout" below if you are ready to end your current session.</div>
-                        <div class="modal-footer">
-                            <button class="btn btn-secondary" type="button" data-dismiss="modal">Cancel</button>
-                            <a class="btn btn-primary" href="/logout">Logout</a>
-                        </div>
                     </div>
-                </div>
-            </div> -->
+
+                    <div class="container" id="table">
+                        <div class="rainfall-watch mt-4 text-center">
+                            <h4><i class="fas fa-cloud-showers-heavy fa-fw"></i><span>&nbsp;Rainfall Watch</span></h4>
+                        </div>
+                        <table class="table table-striped">
+                            <tr>
+                                <th>Station</th>
+                                <th>Maximum Temp. (°C)
+                                </th>
+                                <th>Minimum Temp. (°C)
+                                </th>
+                                <th>24 hrs Rainfall (mm)
+                                </th>
+                                <th>Status
+                                </th>
+                            </tr>
+
+                            {% for observation in observation_all %} {% if observation.status == 'Danger' %}
+                            <tr>
+                                <td class="table-danger">{{ observation.station }}</td>
+                                <td class="table-danger">{{ observation.max_temp }}</td>
+                                <td class="table-danger">{{ observation.mini_temp }}</td>
+                                <td class="table-danger">{{ observation.rainfall_mm }}</td>
+                                <td class="table-danger">{{ observation.status }}</td>
+                                {% else %}
+                                <td>{{ observation.station }}</td>
+                                <td>{{ observation.max_temp }}</td>
+                                <td>{{ observation.mini_temp }}</td>
+                                <td>{{ observation.rainfall_mm }}</td>
+                                <td>{{ observation.status }}</td>
+                                {% endif %}
+                            </tr>
+                            {% endfor %}
+                        </table>
+                        <div class="refresh-data w-100 text-center mb-5">
+                            <button class="btn btn-success font-weight-bold p-3"><a href="{% url 'crawl' %}" class="view-info text-white">Get rainfall data</a></button>
+                        </div>
+
                     </div>
+                    <footer class="sticky-footer">
+                        <div class="container">
+                            <div class="text-center">
+                                <small>Copyright © 2020</small>
+                            </div>
+                        </div>
+                    </footer>
+                    {% else %} {% endif %}
+                    <!-- <a href="/logout/">Logout</a> -->
     </body>
-    <div class="container">
-        <div class="row">
-            <div class="col-sm-4">
-                <button class="btn btn-success font-weight-bold p-3 mr-5"><a href="{% url 'crawl' %}" class="view-info">Get rainfall data</a></button>
+    <script src="{% static 'accounts/script.js' %}"></script>
+    <script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
 
-            </div>
-            <div class="col-sm-6">
-                <h2>Observation in different cities</h2>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.4/chartist.min.js"></script>
+    <script src="https://lib.arvancloud.com/ar/chartist-plugin-legend/0.6.2/chartist-plugin-legend.js"></script>
+    <script>
+        var myChart = new Chartist.Line('#waterFlowChart', {
+            labels: [],
+            series: [
+                [],
+                []
+            ]
+        }, {
 
-            </div>
-        </div>
-        <table class="table table-striped">
-            <tr>
-                <th>Station</th>
-                <th>Maximum Temp. (°C)
-                </th>
-                <th>Minimum Temp. (°C)
-                </th>
-                <th>24 hrs Rainfall (mm)
-                </th>
-                <th>Status
-                </th>
-            </tr>
-
-            {% for observation in observation_all %} {% if observation.status == 'Danger' %}
-            <tr>
-                <td class="table-danger">{{ observation.station }}</td>
-                <td class="table-danger">{{ observation.max_temp }}</td>
-                <td class="table-danger">{{ observation.mini_temp }}</td>
-                <td class="table-danger">{{ observation.rainfall_mm }}</td>
-                <td class="table-danger">{{ observation.status }}</td>
-                {% else %}
-                <td>{{ observation.station }}</td>
-                <td>{{ observation.max_temp }}</td>
-                <td>{{ observation.mini_temp }}</td>
-                <td>{{ observation.rainfall_mm }}</td>
-                <td>{{ observation.status }}</td>
-                {% endif %}
-            </tr>
-            {% endfor %}
-        </table>
-    </div>
-    {% else %} {% endif %}
-    <!-- <a href="/logout/">Logout</a> -->
-</body>
-<script src="{% static 'accounts/script.js' %}"></script>
-<script src="https://code.jquery.com/jquery-3.4.1.min.js" integrity="sha256-CSXorXvZcTkaix6Yvo6HppcZGetbYMGWSFlBw8HfCJo=" crossorigin="anonymous"></script>
-
-<script src="https://cdnjs.cloudflare.com/ajax/libs/chartist/0.11.4/chartist.min.js"></script>
-<script src="https://lib.arvancloud.com/ar/chartist-plugin-legend/0.6.2/chartist-plugin-legend.js"></script>
-<script>
-    var myChart = new Chartist.Line('#waterFlowChart', {
-        labels: [],
-        series: [
-            [],
-            []
-        ]
-    }, {
-
-        title: {
-            display: true,
-            text: 'Sensor Data'
-        },
-        fullWidth: true,
-        chartPadding: {
-            right: 40
-        },
-        options: {
             title: {
                 display: true,
                 text: 'Sensor Data'
-            }
-        },
-        plugins: [
-            Chartist.plugins.legend({
-                legendNames: ['Flow Rate', 'Water Level'],
-            })
-        ]
-    });
-    var allData = [
-        [],
-        []
-    ];
-
-    function updateChart() {
-        var getData = $.get('/get-arduino-data');
-        getData.done(function(result) {
-            result = JSON.parse(result);
-            allData[0].push(result[0]);
-            allData[1].push(result[1]);
-            data = {
-                labels: [],
-                series: allData
-            };
-            myChart.update(data);
+            },
+            fullWidth: true,
+            chartPadding: {
+                right: 40
+            },
+            options: {
+                title: {
+                    display: true,
+                    text: 'Sensor Data'
+                }
+            },
+            plugins: [
+                Chartist.plugins.legend({
+                    legendNames: ['Flow Rate', 'Water Level'],
+                })
+            ]
         });
-        setTimeout(updateChart, 1000);
-    }
+        var allData = [
+            [],
+            []
+        ];
 
-    updateChart();
+        function updateChart() {
+            var getData = $.get('/get-arduino-data');
+            getData.done(function(result) {
+                result = JSON.parse(result);
+                allData[0].push(result[0]);
+                allData[1].push(result[1]);
+                data = {
+                    labels: [],
+                    series: allData
+                };
+                myChart.update(data);
+            });
+            setTimeout(updateChart, 1000);
+        }
 
-    var mymap = L.map('mapid').setView([51.505, -0.09], 13);
-    L.tileLayer('https://api.mapbox.com/styles/v1/{id}/tiles/{z}/{x}/{y}?access_token={accessToken}', {
-        attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
-        maxZoom: 18,
-        id: 'mapbox/streets-v11',
-        tileSize: 512,
-        zoomOffset: -1,
-        accessToken: 'your.mapbox.access.token'
-    }).addTo(mymap);
-</script>
+        updateChart();
+
+
+        ///maps
+
+        const mapBoxToken = 'pk.eyJ1IjoidHVtZXJvcmt1biIsImEiOiJjampudWt3OGwwOHg3M3BudWd6YTh6aWs2In0.B0Jq-sVRnIqwVkLQ3C5dyg';
+        const MapBox = L.tileLayer('https://api.tiles.mapbox.com/v4/{id}/{z}/{x}/{y}.png?access_token={accessToken}', {
+            attribution: 'Map data &copy; <a href="https://www.openstreetmap.org/">OpenStreetMap</a> contributors, <a href="https://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, Imagery © <a href="https://www.mapbox.com/">Mapbox</a>',
+            maxZoom: 13,
+            id: 'mapbox.streets',
+            accessToken: mapBoxToken,
+            noWrap: true
+        });
+
+        // openstreet tile layer and its settings
+        const OpenStreet = L.tileLayer('http://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+            attribution: 'openstreetmap',
+            noWrap: true
+        });
+
+        const Google = L.tileLayer('http://www.google.cn/maps/vt?lyrs=s@189&gl=tr&x={x}&y={y}&z={z}', {
+            attribution: 'google',
+            noWrap: true
+        })
+
+        // grid tile with div
+        const gridDivLayer = L.GridLayer.extend({
+            createTile: function(coords) {
+                const tile = document.createElement('div');
+                var size = this.getTileSize();
+                tile.style.outline = '1px dashed green';
+                tile.style.fontSize = '10px';
+                tile.innerHTML =
+                    `<p class="gridTileCoordinates">
+        ( x: ${coords.x}, y: ${coords.y} )
+      </p>
+      <div class="gridTileZoom">
+        zoom: ${coords.z}
+      </div>`;
+                return tile;
+            }
+        });
+        const gridDiv = new gridDivLayer({
+            noWrap: true,
+            bounds: [
+                [-90, -180],
+                [90, 180]
+            ]
+        });
+
+        // grid tile with canvas
+        const gridCanvasLayer = L.GridLayer.extend({
+            createTile: function(coords) {
+                // create a <canvas> element for drawing
+                var tile = L.DomUtil.create('canvas', 'leaflet-tile');
+                // setup tile width and height according to the options
+                var size = this.getTileSize();
+                tile.width = size.x;
+                tile.height = size.y;
+                // get a canvas context and draw something on it using coords.x, coords.y and coords.z
+                var ctx = tile.getContext('2d');
+                // ctx.setLineDash([5, 5]);
+                ctx.lineWidth = 0.5;
+                ctx.strokeStyle = "black";
+                ctx.rect(0, 0, tile.width, tile.height);
+                ctx.stroke();
+                ctx.fillText(`( x: ${coords.x}, y: ${coords.y} )`, 5, 20);
+                ctx.textAlign = "center";
+                ctx.fillText(`zoom: ${coords.z}`, size.x / 2, size.y / 2)
+                    // return the tile so it can be rendered on screen
+                return tile;
+            }
+        });
+        const gridCanvas = new gridCanvasLayer({
+            noWrap: true,
+            bounds: [
+                [-90, -180],
+                [90, 180]
+            ]
+        });
+
+        // custom control
+        let zoomDivRef;
+        const ZoomView = L.Control.extend({
+            onAdd: function(map) {
+                var div = L.DomUtil.create('div', "leaflet-zoom-control leaflet-bar-part leaflet-bar");
+
+                div.innerHTML = 'zoom: ' + map.getZoom();
+                zoomDivRef = div;
+                return div;
+            },
+
+            onRemove: function(map) {
+                // Nothing to do here
+            }
+        });
+        L.control.zoomview = (opts) => new ZoomView(opts);
+        const zoom = L.control.zoomview({
+            position: 'topleft'
+        });
+
+        // layers control
+        const gridsAsOverLay = {
+            gridDiv,
+            gridCanvas
+        };
+        const baseMaps = {
+            MapBox,
+            Google,
+            OpenStreet
+        };
+        const layers = L.control.layers(baseMaps, gridsAsOverLay, {
+            position: 'topleft'
+        });
+
+        // scale control
+        const scale = L.control.scale()
+
+        // leaflet map init
+        const map = L.map('map', {
+            maxBounds: [
+                [-90, -180],
+                [90, 180]
+            ],
+            layers: [OpenStreet]
+        }).setView([0, 0], 0);
+
+        // get nepal to center
+        map.fitBounds([
+            [28.3949, 84.1240],
+            [27.7172, 85.3240]
+        ]);
+
+        // add to map zoom control
+        zoom.addTo(map);
+
+        // add to map layers control
+        setTimeout(() => {
+                layers.addTo(map);
+            }, 2000) // setTimeout just for fun
+
+        // add to map scale control
+        scale.addTo(map);
+
+        map.on('zoomend', () => {
+            zoomDivRef.innerHTML = `zoom: ${map.getZoom()}`;
+        });
+
+        L.marker([27.4696, 85.2722]).addTo(map)
+            .bindPopup('Central Development Region<br> Death: 29 <br> Missing: 7 <br> Injured: 9')
+            .openPopup();
+
+        L.marker([28.1653, 83.9321]).addTo(map)
+            .bindPopup('Western Development Region<br> Death: 1 <br> Missing: 0 <br> Injured: 0')
+            .openPopup();
+
+        L.marker([29.2988, 80.9871]).addTo(map)
+            .bindPopup('Far Western Development Region<br> Death: 0 <br> Missing: 0 <br> Injured: 0')
+            .openPopup();
+
+        L.marker([27.3309, 87.0624]).addTo(map)
+            .bindPopup('Eastern Development Region <br> Death: 12 <br> Missing: 8 <br> Injured: 10')
+            .openPopup();
+
+        L.marker([29.0165, 82.3886]).addTo(map)
+            .bindPopup('Mid Western Development Region<br> Death: 1 <br> Missing: 0 <br> Injured: 0')
+            .openPopup();
+    </script>
 
 </html>

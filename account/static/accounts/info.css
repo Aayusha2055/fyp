@@ -145,6 +145,11 @@ body.fixed-nav {
     text-overflow: ellipsis;
 }
 
+.navbar-dark .navbar-brand,
+.navbar-dark .navbar-nav .nav-link {
+    color: #afd3a5 !important;
+}
+
 @media (min-width: 992px) {
     #mainNav .navbar-brand {
         width: 250px;
@@ -228,7 +233,7 @@ body.fixed-nav {
 }
 
 #mainNav.fixed-top.navbar-dark .sidenav-toggler {
-    background-color: #212529;
+    background-color: #afd3a5;
 }
 
 #mainNav.fixed-top.navbar-dark .sidenav-toggler a i {
@@ -333,36 +338,36 @@ body.sidenav-toggled .navbar-sidenav-tooltip.show {
 }
 
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav .nav-link-collapse:after {
-    color: #868e96;
+    color: #afd3a5;
 }
 
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav>.nav-item>.nav-link {
-    color: #868e96;
+    color: #afd3a5;
 }
 
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav>.nav-item>.nav-link:hover {
-    color: #adb5bd;
+    color: #afd3a5;
 }
 
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav>.nav-item .sidenav-second-level>li>a,
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav>.nav-item .sidenav-third-level>li>a {
-    color: #868e96;
+    color: #afd3a5;
 }
 
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav>.nav-item .sidenav-second-level>li>a:focus,
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav>.nav-item .sidenav-second-level>li>a:hover,
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav>.nav-item .sidenav-third-level>li>a:focus,
 #mainNav.navbar-dark .navbar-collapse .navbar-sidenav>.nav-item .sidenav-third-level>li>a:hover {
-    color: #adb5bd;
+    color: #afd3a5;
 }
 
 #mainNav.navbar-dark .navbar-collapse .navbar-nav>.nav-item.dropdown>.nav-link:after {
-    color: #adb5bd;
+    color: #afd3a5;
 }
 
 @media (min-width: 992px) {
     #mainNav.navbar-dark .navbar-collapse .navbar-sidenav {
-        background: #343a40;
+        background: #2b2e31;
     }
     #mainNav.navbar-dark .navbar-collapse .navbar-sidenav li.active a {
         color: white !important;
@@ -554,4 +559,8 @@ footer.sticky-footer {
 .ct-chart g:not(.ct-grids):not(.ct-labels) g:nth-child(1n+4) .ct-point,
 .ct-chart g:not(.ct-grids):not(.ct-labels) g:nth-child(1n+4) .ct-line {
     stroke: #F06292;
+}
+
+.card {
+    margin: 3rem;
 }
