@@ -2,6 +2,9 @@ from django import forms
 from .models import *
 from django.contrib.auth.models import User
 from django.core.validators import validate_email
+from django.contrib.auth import get_user_model
+
+User = get_user_model()
 
 
 class cust_reg_form(forms.ModelForm):
@@ -25,9 +28,13 @@ class cust_reg_form(forms.ModelForm):
     #     attrs={'class':'form-control','placeholder':'Enter your birthday:'}
     # ), required=True,)
 
-    # phone_number = forms.CharField(widget=forms.NumberInput(
-    #     attrs={'class':'form-control', 'placeholder':'@phone-number'}
-    # ), required=True, max_length=50)
+    phone = forms.CharField(widget=forms.NumberInput(
+        attrs={'class':'form-control', 'placeholder':'@phone-number'}
+    ), required=True, max_length=50)
+
+    location = forms.CharField(widget=forms.TextInput(
+        attrs={'class':'form-control', 'placeholder':'@location'}
+    ), required=True, max_length=50)
 
     password = forms.CharField(widget=forms.PasswordInput(
         attrs={'class':'form-control', 'placeholder':'@password'}
@@ -39,7 +46,7 @@ class cust_reg_form(forms.ModelForm):
 
     class Meta():
         model = User
-        fields = ['username', 'first_name', 'last_name','email', 'password']
+        fields = ['username', 'first_name', 'last_name','email', 'phone', 'location', 'password']
 
     
     def clean_username(self):

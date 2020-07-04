@@ -201,12 +201,26 @@
                             </div>
 
                             <div class="form-group">
+                                <i class="fas fa-circle fa-fw font-weight-bold"></i> {{ form.phone}}
+                            </div>
+
+                            <div class="form-group">
+                                <i class="fas fa-circle fa-fw font-weight-bold"></i> {{ form.location}}
+                            </div>
+
+                            <div class="form-group">
                                 <i class="fas fa-circle fa-fw font-weight-bold"></i> {{ form.password}}
                             </div>
 
                             <div class="form-group">
                                 <i class="fas fa-circle fa-fw font-weight-bold"></i> {{ form.confirm_password}} {{ form.confirm_password.errors }}
                             </div>
+                            <!-- <div class="form-group">
+                                <i class="fas fa-circle fa-fw font-weight-bold"></i> {{ profile_form.location }} {{ profile_form.phone.errors }}
+                            </div>
+                            <div class="form-group">
+                                <i class="fas fa-circle fa-fw font-weight-bold"></i> {{ profile_form.phone }} {{ profile_form.phone.errors }}
+                            </div> -->
                             <br />
                             <button class="btn btn-success sign-up-btn font-weight-bold" type="submit">Sign up for the System</button>
                         </form>

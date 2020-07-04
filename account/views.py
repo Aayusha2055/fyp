@@ -15,7 +15,9 @@ from django.shortcuts import redirect, reverse
 from django.views.decorators.csrf import csrf_protect
 from bs4 import BeautifulSoup
 from selenium import webdriver
+from django.contrib.auth import get_user_model
 
+User = get_user_model()
 
 
 
@@ -29,8 +31,10 @@ def custreg(request):
             first_name = form.cleaned_data['first_name']
             last_name = form.cleaned_data['last_name']
             email = form.cleaned_data['email']
+            phone = form.cleaned_data['phone']
+            location = form.cleaned_data['location']
             password = form.cleaned_data['password']
-            User.objects.create_user(username=username, first_name=first_name, last_name=last_name, email=email, password=password)
+            User.objects.create_user(username=username, first_name=first_name, last_name=last_name, email=email, phone=phone, location=location, password=password)
             usr = auth.authenticate(username=username, password=password)
             auth.login(request, usr)
             return redirect(reverse('welcome'))
