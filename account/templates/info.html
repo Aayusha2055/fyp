@@ -193,6 +193,13 @@
                                 <div class="card-header">
                                     <i class="fa fa-bar-chart"></i> Water flow Chart</div>
                                 <div class="card-body">
+                                    <table class="table table-striped" id="sensorTable">
+                                        <tr>
+                                            <th>Water Flow Rate</th>
+                                            <th>Water Level</th>
+                                        </tr>
+                                        <tr></tr>
+                                    </table>
                                     <div class="ct-chart ct-perfect-fourth" id="waterFlowChart"></div>
                                 </div>
                                 <div class="card-footer small text-muted">Latest Update</div>
@@ -295,8 +302,11 @@
             var getData = $.get('/get-arduino-data');
             getData.done(function(result) {
                 result = JSON.parse(result);
+                updateTableRow(result);
                 allData[0].push(result[0]);
                 allData[1].push(result[1]);
+                allData[0] = allData[0].slice(-5);
+                allData[1] = allData[1].slice(-5);
                 data = {
                     labels: [],
                     series: allData
@@ -307,6 +317,25 @@
         }
 
         updateChart();
+
+        function updateTableRow(result) {
+            var table = document.getElementById("sensorTable");
+            table.deleteRow(1);
+            var row = table.insertRow(1);
+            row.style.color = "white";
+            row.style.backgroundColor = "green";
+            var cell1 = row.insertCell(0);
+            var cell2 = row.insertCell(1);
+            cell1.innerHTML = result[0];
+            cell2.innerHTML = result[1];
+            if (result[1] < 4) {
+                row.style.backgroundColor = "red";
+            } else if (result[1] <= 8) {
+                row.style.color = "black";
+                row.style.backgroundColor = "yellow"
+            }
+
+        }
 
 
         ///maps

@@ -12,7 +12,7 @@ def getPorts():
         ports.append(port)
     return ports
 
-"""
+
 def begin():
     ports = getPorts()
     json_data = []
@@ -31,9 +31,10 @@ def begin():
                     data = re.sub(' L/hour', '', data)
 
                 if 'cm' in data:
-                    data = re.sub('[0-9]in, ', '', data)
+                    data = re.sub('[0-9]*in, ', '', data)
                     data = re.sub('cm', '', data)
                 
+
                 json_data.append(data)
             else:
                 break
@@ -42,11 +43,5 @@ def begin():
         break
 
     return json.dumps(json_data)
-"""
 
-def begin():
-    data = [
-        randint(0, 15),
-        randint(5,254)
-    ]
-    return json.dumps(data)
+begin()
