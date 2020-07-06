@@ -1,14 +1,15 @@
 # -*- coding: utf-8 -*-
 from __future__ import unicode_literals
 
-from django.contrib.auth.models import User
 from django.db import models
 from django.conf import settings
-from django.core.validators import RegexValidator
-from django.core.exceptions import ValidationError
-from django.utils.translation import gettext_lazy as _
+from django.contrib.auth.models import AbstractUser
 
 # Create your models here.
+
+class User(AbstractUser):
+    location = models.CharField(max_length=255,  null=True)
+    phone = models.CharField(max_length=255,  null=True)
 
 class products(models.Model):
     name = models.CharField(max_length=50)

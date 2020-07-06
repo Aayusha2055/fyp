@@ -125,9 +125,12 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 
+AUTH_USER_MODEL = 'account.User'
+
 EMAIL_HOST = 'smtp.gmail.com'
 EMAIL_PORT = 587
 EMAIL_HOST_USER = 'aayusha.paudel@deerwalk.edu.np'
 EMAIL_HOST_PASSWORD = '9851041947A'
 EMAIL_USE_TLS = True
 ACCOUNT_EMAIL_VERIFICATION = 'none'
+
