@@ -24,6 +24,7 @@ def begin():
             if lineCount < 2:
                 data = ser.readline()
                 data = data.decode().strip()
+                print(data)
                 if lineCount == 0 and 'L/hour' not in data:
                     continue
 
@@ -36,6 +37,7 @@ def begin():
                 
 
                 json_data.append(data)
+                # print(data)
             else:
                 break
             lineCount = lineCount + 1

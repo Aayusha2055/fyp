@@ -106,6 +106,12 @@
                         </a>
                     </li>
                     <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
+                        <a class="nav-link" href="welcome.html">
+                            <i class="fas fa-home"></i>
+                            <span class="nav-link-text">Home</span>
+                        </a>
+                    </li>
+                    <li class="nav-item" data-toggle="tooltip" data-placement="right" title="Charts">
                         <a class="nav-link" href="#chart">
                             <i class="fa fa-fw fa-area-chart"></i>
                             <span class="nav-link-text">Charts</span>
@@ -177,8 +183,15 @@
             <div class="container-fluid">
                 <!-- Area Chart Example-->
                 <div class="card mb-3">
-                    <div class="card-header">
-                        <i class="fa fa-area-chart"></i>Death Toll Count - Latest Update (2019)</div>
+                    <div class="card-header float-left py-4">
+                        <i class="fa fa-area-chart"></i>Death Toll Count - Latest Update (2017)
+                        <div class="float-right">
+                            <button class="btn-success font-weight-bold p-2">2018</button>
+                            <button class="btn-success font-weight-bold p-2">2019</button>
+                        </div>
+                    </div>
+
+                    <div class="clearfix"></div>
                     <div class="card-body">
                         <div id="map"></div>
                     </div>
@@ -328,7 +341,7 @@
             var cell2 = row.insertCell(1);
             cell1.innerHTML = result[0];
             cell2.innerHTML = result[1];
-            if (result[1] < 4) {
+            if (result[1] <= 4) {
                 row.style.backgroundColor = "red";
             } else if (result[1] <= 8) {
                 row.style.color = "black";
